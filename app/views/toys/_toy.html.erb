@@ -24,4 +24,8 @@
     <%= toy.condition %>
   </p>
 
+  <% if toy.image.attached? %>
+    <%= image_tag(toy.image, class: "image-rounded") %>
+  <% end %>
+
 </div>
