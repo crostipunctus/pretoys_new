@@ -1,5 +1,6 @@
 class ToysController < ApplicationController
   before_action :set_toy, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new edit create update destroy set_toy]
 
   # GET /toys or /toys.json
   def index
@@ -22,6 +23,7 @@ class ToysController < ApplicationController
   # POST /toys or /toys.json
   def create
     @toy = Toy.new(toy_params)
+    @toy.user_id = current_user.id
 
     respond_to do |format|
       if @toy.save
@@ -65,6 +67,6 @@ class ToysController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def toy_params
-      params.require(:toy).permit(:title, :description, :price, :age, :condition, :image)
+      params.require(:toy).permit(:title, :description, :price, :age, :condition, :image, :category_id)
     end
 end

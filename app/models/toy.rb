@@ -3,4 +3,11 @@ class Toy < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [300, 300]
   end
   belongs_to :category
+  belongs_to :user
+
+  validates :title, presence: true, length: { minimum: 6, maximum: 100 }
+  validates :description, presence: true, length: { minimum: 10, maximum: 300 }
+  validates :price, presence: true
+  validates :age, presence: true
+  validates :condition, presence: true
 end

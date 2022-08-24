@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+
+<div class="container px-4 text-center" >
+      <div class="row gx-5" >
+        <% @toys.each do |toy| %>
+          <div class="col" >
+            <strong><%= link_to toy.title.capitalize, toy, class: "nav-link" %></strong>
+            <% if toy.image.attached? %>
+              <%= link_to image_tag(toy.image.variant(:thumb), class: "image-rounded"), toy %>
+            <% end %>
+              <h6>Posted by: <%= toy.user.email %></h6>
+          </div>
+        <% end %>
+      </div>
+  </div>
+  
+
+<div>
+  <%= link_to "Edit this category", edit_category_path(@category) %> |
+  <%= link_to "Back to categories", categories_path %>
+
+  <%= button_to "Destroy this category", @category, method: :delete %>
+</div>

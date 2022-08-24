@@ -24,6 +24,11 @@
     <%= toy.condition %>
   </p>
 
+   <p>
+    <strong>Category:</strong>
+    <%= toy.category.name.capitalize %>
+  </p>
+
   <% if toy.image.attached? %>
     <%= image_tag(toy.image, class: "image-rounded") %>
   <% end %>

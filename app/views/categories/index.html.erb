@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Categories</h1>
+
+<div id="categories">
+  
+  <div class="container px-4 text-center" >
+      <div class="row gx-5" >
+        <% @categories.each do |category| %>
+          <div class="col" >
+            <strong><%= link_to category.name.capitalize, category, class: "nav-link" %></strong>
+            <% if category.image.attached? %>
+              <%= link_to image_tag(category.image.variant(:thumb), class: "image-rounded"), category%>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+  </div>
+  
+
+
+</div>
+

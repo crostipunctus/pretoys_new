@@ -31,9 +31,14 @@
     <%= form.text_field :age %>
   </div>
 
-  <div>
-    <%= form.label :condition, style: "display: block" %>
-    <%= form.text_field :condition %>
+  <div class="mb-3">
+    <%= form.label :condition, class: "form-label" %>
+    <%= form.select :condition, ["Brand new", "Like new", "Old", "Damaged", "Gently Used"], class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :category, class: "form-label" %>
+    <%= form.collection_select :category_id, Category.order(:name), :id, :name, class: "form-control" %>
   </div>
 
    <div class="mb-3">
