@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one :cart
   has_one_attached :avatar 
   has_many :toys
   # Include default devise modules. Others available are:
