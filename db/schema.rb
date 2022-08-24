@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_24_013952) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_24_014326) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -52,6 +52,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_013952) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer "cart_id", null: false
+    t.integer "toy_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_order_items_on_cart_id"
+    t.index ["toy_id"], name: "index_order_items_on_toy_id"
+  end
+
   create_table "toys", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -85,6 +94,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_013952) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "carts", "users"
+  add_foreign_key "order_items", "carts"
+  add_foreign_key "order_items", "toys"
   add_foreign_key "toys", "categories"
   add_foreign_key "toys", "users"
 end
