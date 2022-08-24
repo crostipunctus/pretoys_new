@@ -1,6 +1,9 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!, only: %i[ index ]
+
   def index 
-    @cart = current_user.cart
-    @orders = @cart.toys
-  end
+    @toys = @cart.toys
+  end 
+
+
 end
