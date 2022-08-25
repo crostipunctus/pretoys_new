@@ -1,5 +1,13 @@
 <h1>Cart</h1>
 
-<% @toys.each do |toy| %>
-  <%= link_to toy.title.capitalize, toy, class: "nav-link" %> 
-<% end %>
+
+<div style="display:flex;justify-content:space-between">
+  <% @order_items.each do |item| %>
+    <strong>Name: </strong><%= item.toy.title %>
+    <strong>Price: </strong><%= item.toy.price %>
+    <strong>Quantity: </strong><%= item.quantity %>
+  <% end %>
+</div>
+
+
+
