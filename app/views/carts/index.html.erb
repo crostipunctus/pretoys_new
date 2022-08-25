@@ -1,5 +1,5 @@
 <h1>Cart</h1>
 
 <% @toys.each do |toy| %>
-  <%= toy.title %>
+  <%= link_to toy.title.capitalize, toy, class: "nav-link" %> 
 <% end %>
