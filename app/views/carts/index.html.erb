@@ -3,7 +3,7 @@
 
 <div style="display:flex;justify-content:space-between">
   <% @order_items.each do |item| %>
-    <strong>Name: </strong><%= item.toy.title %>
+    <strong>Name: </strong><%= item.toy.title.capitalize %>
     <strong>Price: </strong><%= item.toy.price %>
     <strong>Quantity: </strong><%= item.quantity %>
   <% end %>
