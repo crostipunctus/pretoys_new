@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :toys
 
   get "cart", to: "carts#index"
+  post "add_cart", to: "carts#add"
 
   resources :categories
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
