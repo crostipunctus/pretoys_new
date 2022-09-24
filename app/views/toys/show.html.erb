@@ -3,15 +3,18 @@
 <%= render @toy %>
 
 <div>
-  <%= link_to "Edit this toy", edit_toy_path(@toy) %> |
+  
   <%= link_to "Back to toys", toys_path %>
 
-  <%= button_to "Destroy this toy", @toy, method: :delete %>
+  <% if current_user %>
+   <%= link_to "Edit this toy", edit_toy_path(@toy) %>
+    <%= button_to "Destroy this toy", @toy, method: :delete %>
 
-  <%= form_with url: "/add_cart", method: :post do |form| %>
-      <%= form.hidden_field :id, value: @toy.id %>
-      <%= form.number_field :quantity, min: 0 %>
-      <%= form.submit "Add to cart" %>
+    <%= form_with url: "/add_cart", method: :post do |form| %>
+        <%= form.hidden_field :id, value: @toy.id %>
+        <%= form.number_field :quantity, min: 0 %>
+        <%= form.submit "Add to cart" %>
+    <% end %>
   <% end %>
 
 </div>
